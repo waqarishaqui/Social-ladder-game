@@ -186,11 +186,20 @@ function notifyPlayer(message){
         soundClone.play();
     }
 }
-    function levelUpBarUpdate(){
-        const bar=document.getElementById('progressBar');
-        let progress= ((currentLevel+1)/levels.length)*100;
-        bar.style.height= progress +"%";
-      }
+function levelUpBarUpdate() {
+    const bar = document.getElementById('progressBar');
+    let progress = ((currentLevel + 1) / levels.length) * 100;
+
+    if (window.matchMedia("(max-width: 600px)").matches) {
+        // Mobile: grow sideways
+        bar.style.width = progress + "%";
+        bar.style.height = "100%";
+    } else {
+        // Desktop: grow vertically
+        bar.style.height = progress + "%";
+        bar.style.width = "100%";
+    }
+}
 
       function applyLevelColor() {
         document.body.style.transition = "background 1s ease-in-out"; // smooth bg change
