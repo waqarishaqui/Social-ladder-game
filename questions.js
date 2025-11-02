@@ -218,7 +218,7 @@ const level5Questions = [
     options: ["Privatize and hike prices", "Keep water affordable"],
     effects: [
       { money: 40, morale: -28, family: -12, health: -5 }, // Privatize: huge money, widespread moral/health cost
-      { money: -30, morale: 28, family: 12, health: -12 }  // Keep affordable: moral win, heavy financial burden & security risk
+      { money: -30, morale: 28, family: 12, health: 0 }  // Keep affordable: moral win, heavy financial burden & security risk
     ]
   }
 ];
