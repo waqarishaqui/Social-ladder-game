@@ -107,37 +107,27 @@ function gameOver(message)
     }
     document.getElementById("questionSet").appendChild(replayBtn);
 }
-function endGame()
-{
-    let message= "";
+function endGame() {
+    // Hide notifications (because getElementsByClassName returns a collection)
+    const notifs = document.getElementsByClassName('notification');
+    for (let n of notifs) {
+        n.style.display = "none";
+    }
 
-    if(player.money >= 150 && player.morale >= 50) {
+    let message = "Laughs in rich! You've become the capitalist";
     triggerConfetti();
-        message = "Laughs in rich! You've become the capitalist";
-        document.getElementById('level').style.display="none";
-        document.getElementsByClassName('notification').style.display="none";
-    } else if(player.morale < 30) {
-        message = "You burned out before reaching the top.";
-        document.getElementById('level').style.display="none";
-        document.getElementsByClassName('notification').style.display="none";
-    } else {
-        message = "You stayed loyal but never climbed higher.";
-        document.getElementById('level').style.display="none";
-        document.getElementsByClassName('notification').style.display="none";
-    }
 
-    document.getElementById("question").innerText=message;
-    document.getElementById("buttonSet").style.display="none";
+    document.getElementById('level').style.display = "none";
+    document.getElementById("question").innerText = message;
+    document.getElementById("buttonSet").style.display = "none";
 
-    const replayBtn= document.createElement("button");
-    replayBtn.innerText="Play Again";
+    const replayBtn = document.createElement("button");
+    replayBtn.innerText = "Play Again";
+    replayBtn.onclick = () => window.location.reload();
 
-    replayBtn.onclick=function(){
-        window.location.reload();
-    }
     document.getElementById("questionSet").appendChild(replayBtn);
-    
 }
+
 function lifePressure()
 {
     if ((player.money>100 || player.family<30) && !pressureFlags.money)
